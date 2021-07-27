@@ -16,9 +16,11 @@ public class RockPaperScissors {
     public static void main(String[] args){
         
         System.out.println("Let's play Rock Paper Scissors!");
+        
         do{
             playGame(getRounds());
         }while(keepPlaying());
+        
         System.out.println("Thanks for playing!");
         
     }
@@ -30,12 +32,14 @@ public class RockPaperScissors {
         int playerMove;
         int compMove;
         
-        for( int i =0; i < numRounds; i++){
+        for(int i =0; i < numRounds; i++){
             
             playerMove = getMove();
             compMove = r.nextInt(3)+1;
+            
             System.out.println("Your move: " + moveName(playerMove));
             System.out.println("Computer move: " + moveName(compMove));
+            
             if (playerMove == compMove){
                 ties++;
                 System.out.println("It was a tie!");  
@@ -53,8 +57,9 @@ public class RockPaperScissors {
                 System.out.println("You win!");    
             }
             else{
-                System.out.println("You lose! :(");
                 compWins++;
+                System.out.println("You lose! :(");
+                
             }
             System.out.println();
         }
@@ -70,7 +75,6 @@ public class RockPaperScissors {
             System.out.println("Invalid input value for the number of rounds. Exiting now.");
             System.exit(0);
         }
-        
         return numRounds;
     }
     
