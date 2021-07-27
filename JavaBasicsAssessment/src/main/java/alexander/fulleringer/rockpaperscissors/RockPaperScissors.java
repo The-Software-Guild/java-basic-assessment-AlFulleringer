@@ -1,9 +1,9 @@
- /**
-  *@author Alexander Fulleringer
-  *email: alexander.fulleringer@mail.mcgill.ca
-  *date: 2021-07-27
-  *purpose: RPS Assessment Code
-  */
+/**
+ *@author Alexander Fulleringer
+ *email: alexander.fulleringer@mail.mcgill.ca
+ *date: 2021-07-27
+ *purpose: RPS Assessment Code
+ */
 package alexander.fulleringer.rockpaperscissors;
 
 import java.util.Scanner;
@@ -34,31 +34,29 @@ public class RockPaperScissors {
             
             playerMove = getMove();
             compMove = r.nextInt(3)+1;
-            
+            System.out.println("Your move: " + moveName(playerMove));
+            System.out.println("Computer move: " + moveName(compMove));
             if (playerMove == compMove){
                 ties++;
-                System.out.println("It was a tie!");
-                
+                System.out.println("It was a tie!");  
             }
             else if (playerMove == 1 && compMove == 3){
                 playerWins++;
-                System.out.println("You win!");
-                
+                System.out.println("You win!"); 
             }
             else if (playerMove == 2 && compMove == 1){
                 playerWins++;
-                System.out.println("You win!");
-                
+                System.out.println("You win!");      
             }
             else if (playerMove == 3 && compMove == 2){
                 playerWins++;
-                System.out.println("You win!");
-                ;
+                System.out.println("You win!");    
             }
             else{
                 System.out.println("You lose! :(");
                 compWins++;
             }
+            System.out.println();
         }
         printResults(ties, playerWins, compWins);
     }
@@ -80,7 +78,8 @@ public class RockPaperScissors {
         System.out.println("What's your move? Input a 1 for Rock, 2 for Paper, and 3 for Scissors.");
         int move = sc.nextInt();
         if (move > 3 || move < 1){
-            System.out.println("Invalid input value for your move. Exiting now.");
+            System.out.println("Invalid input value for your move. Please try again.\n");
+            return getMove();
         }
         return move;
     }
@@ -103,7 +102,31 @@ public class RockPaperScissors {
     public static boolean keepPlaying(){
         System.out.println("Would you like to keep playing? Please say Yes or No");
         String s = sc.next();
-        return s.equals("Yes");
+        if (s.equals("Yes")){
+            return true;
+        }
+        else if (s.equals("No")){
+            return false;
+        }
+        else{
+            System.out.println("Your input was invalid, please try again");
+            return keepPlaying();
+        }
+        
+    }
+    
+    public static String moveName(int move){
+        String s = "";
+        if (move == 1){
+            s = "Rock";
+        }
+        if (move == 2){
+            s = "Paper";
+        }
+        if (move == 3){
+            s = "Scissors";
+        }
+        return s;
     }
     
 }
